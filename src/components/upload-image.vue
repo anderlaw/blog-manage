@@ -2,14 +2,16 @@
   <div>
     <imageCut @dataReady="handleData" />
     <el-button style="margin-top:8px;" size="small" @click="handleSend" type="primary">确定上传</el-button>
-    <el-alert
-      v-for="(item,index) in uploadList"
-      :key="index"
-      title="上传成功！"
-      type="success"
-      :description="item.filePath"
-      show-icon
-    ></el-alert>
+    <div style="margin-bottom:4px;" v-for="(item,index) in uploadList" :key="index">
+      <img :src="item.dataUrl" alt="" style="vertical-align:middle;">
+      <el-alert
+        title="上传成功！"
+        type="success"
+        :description="item.filePath"
+        show-icon
+      ></el-alert>
+    </div>
+    
   </div>
 </template>
 
