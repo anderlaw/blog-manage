@@ -1,18 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="switchIpt">点击</button>
+    <Editor v-if="count === 0"/>
+    <UpImage v-if="count === 1"/>
+    <UpVideo v-if="count === 2"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
 
+import Editor from './components/editor.vue'
+import UpImage from './components/upload-image.vue'
+import UpVideo from './components/upload-video.vue'
 export default {
-  name: 'app',
   components: {
-    HelloWorld,
+    Editor,
+    UpImage,
+    UpVideo
   },
+  data(){
+    return {
+      count:0
+    }
+  },
+  methods:{
+    switchIpt(){
+      this.count++;
+      this.count = this.count % 3;
+    }
+  }
 };
 </script>
 
