@@ -2,7 +2,7 @@
 let baseUrl = 'http://106.13.170.74:3000';
 export default function (option) {
   var xhr = new XMLHttpRequest();
-  xhr.withCredentials = true;
+  // xhr.withCredentials = true;
   let queryStr = '?';
   for (let key in option.data) {
     queryStr += `${key}=${option.data[key]}&`;
