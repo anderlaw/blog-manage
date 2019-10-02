@@ -14,11 +14,19 @@
       <el-form-item label="文章描述" prop="desc">
         <el-input type="textarea" v-model="ruleForm.desc"></el-input>
       </el-form-item>
+      <el-form-item label="文章类型" prop="type">
+        <el-select v-model="ruleForm.type" placeholder="请选择文章类型">
+          <el-option label="技术" value="tech"></el-option>
+          <el-option label="旅行" value="travel"></el-option>
+          <el-option label="杂谈" value="talk"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item label="文章封面">
-        <img :src="dataUrl" alt="" style="vertical-align:middle;margin-right:10px;">
+        <img :src="dataUrl" alt style="vertical-align:middle;margin-right:10px;" />
         <el-button size="mini" type="info" @click="openDialog">选择图片</el-button>
         <!-- <imageCut @dataReady="handleData" /> -->
       </el-form-item>
+      
     </el-form>
     <el-dialog @close="dialogVisible = false;" title="选择剪切图片" :visible="dialogVisible">
       <imageCut @dataReady="handleData" />
@@ -37,23 +45,25 @@ export default {
     return {
       simplemde: null,
       file: null,
-      dataUrl:'',
+      dataUrl: "",
       ruleForm: {
         title: "",
-        desc: ""
+        desc: "",
+        type:"",
       },
       rules: {
         title: [{ required: true, message: "请输入文章标题", trigger: "blur" }],
-        desc: [{ required: true, message: "请输入文章描述", trigger: "change" }]
+        desc: [{ required: true, message: "请输入文章描述", trigger: "change" }],
+        type: [{ required: true, message: "请输入文章类型", trigger: "change" }],
       },
-      dialogVisible:false
+      dialogVisible: false
     };
   },
   components: {
     imageCut
   },
   methods: {
-    openDialog(event){
+    openDialog(event) {
       event.preventDefault();
       this.dialogVisible = true;
     },
@@ -76,6 +86,7 @@ export default {
 
           formData.append("title", this.ruleForm.title);
           formData.append("desc", this.ruleForm.desc);
+          formData.append("type", this.ruleForm.type);
           formData.append("content", this.simplemde.value());
           formData.append("coverImg", this.file);
           console.log(formData);
