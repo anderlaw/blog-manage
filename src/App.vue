@@ -158,6 +158,6 @@ body {
   transform: translateY(-50%);
 }
 .CodeMirror img{
-  max-width:100% !import;
+  max-width:100% !important;
 }
 </style>
