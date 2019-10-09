@@ -1,5 +1,5 @@
 // let baseUrl = 'http://127.0.0.1:3000';
-let baseUrl = 'http://106.13.170.74:3000';
+let baseUrl = 'https://www.tech-share.cn';
 export default function (option) {
   var xhr = new XMLHttpRequest();
   // xhr.withCredentials = true;
