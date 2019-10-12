@@ -73,13 +73,17 @@ export default {
       }
       var arr = this.imgDataUrl.split(',');
       var mime = arr[0].match(/:(.*?);/)[1];
+
+      //获取后缀名。
+      var subFixFile = mime.split('/')[1];
+
       var bstr = atob(arr[1]);
       var n = bstr.length;
       var u8arr = new Uint8Array(n);
       while(n--){
           u8arr[n] = bstr.charCodeAt(n);
       }
-      return new File([u8arr], 'coverImg', {type:mime});
+      return new File([u8arr], 'coverImg.'+subFixFile, {type:mime});
     },
     handleVideofile(ev){
       var file = ev.target.files[0];
