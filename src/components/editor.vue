@@ -23,7 +23,7 @@
       </el-form-item>
       <el-form-item label="文章封面">
         <img :src="dataUrl" alt style="vertical-align:middle;margin-right:10px;" />
-        <el-button size="mini" type="info" @click="openDialog">选择图片</el-button>
+        <el-button size="mini" type="success" @click="openDialog">选择图片</el-button>
         <!-- <imageCut @dataReady="handleData" /> -->
       </el-form-item>
       
